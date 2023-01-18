@@ -1,16 +1,26 @@
+import DarkLogo from '../../assets/LogoDark.svg'
+import LightLogo from '../../assets/LogoLight.svg'
+
 export const Darktheme = {
   colors: {
     gray: {
-      '50': '#DC143C',
-      '100': '#C71585',
+      /* Heading/text */
+      '200': '#F5F8FA',
+      /* info */
+      '100': '#DADADA',
     },
   },
+
+  Logo: DarkLogo,
 }
 export const LightTheme = {
   colors: {
     gray: {
-      '50': 'blue',
-      '100': 'blue',
+      /* Heading/text */
+      '200': '#47585B',
+      /* info */
+      '100': '#999999',
     },
   },
+  Logo: LightLogo,
 }

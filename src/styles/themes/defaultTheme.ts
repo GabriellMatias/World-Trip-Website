@@ -11,11 +11,22 @@ const config: ThemeConfig = {
 
 export const theme = extendTheme({
   config,
+  colors: {
+    orange: {
+      '500': '#FFBA08',
+    },
+    white: '#fff',
+    black: '#000',
+  },
+  fonts: {
+    heading: 'Poppins',
+    body: 'Poppins',
+  },
 
   styles: {
     global: (props: themeProps) => ({
       body: {
-        bg: props.colorMode === 'dark' ? 'white' : 'black',
+        bg: props.colorMode === 'dark' ? '#F5F8FA' : '#47585B',
       },
     }),
   },
