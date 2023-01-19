@@ -13,6 +13,7 @@ export function Categories({ title }: CategoriesProps) {
       textDecoration={'none'}
       display="flex"
       alignItems={'center'}
+      justifyContent="center"
       gap={'8px'}
     >
       <Box

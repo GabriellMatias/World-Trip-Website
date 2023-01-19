@@ -10,7 +10,6 @@ export const Darktheme = {
       '100': '#DADADA',
     },
   },
-
   Logo: DarkLogo,
 }
 export const LightTheme = {

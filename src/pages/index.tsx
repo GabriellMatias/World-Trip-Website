@@ -1,14 +1,7 @@
 import { Categories } from '@/components/Categories'
 import { HeaderComponent } from '@/components/Header'
 import { Darktheme, LightTheme } from '@/styles/themes'
-import {
-  Box,
-  useColorModeValue,
-  Flex,
-  VStack,
-  Text,
-  color,
-} from '@chakra-ui/react'
+import { Box, useColorModeValue, Flex, VStack, Text } from '@chakra-ui/react'
 
 export default function Home() {
   const { colors } = useColorModeValue(Darktheme, LightTheme)
@@ -43,20 +36,24 @@ export default function Home() {
           </Text>
         </Box>
       </VStack>
-      <Box
-        as="section"
-        display={'grid'}
-        gridTemplateColumns={'1fr 1fr'}
-        alignItems={'center'}
-        gap={'29px'}
-        margin={'50px 36px'}
-      >
-        <Categories title="Vida Noturna" />
-        <Categories title="Praia" />
-        <Categories title="moderno" />
-        <Categories title="Classico" />
+
+      <Flex flexDirection={'column'} margin={'50px 36px'}>
+        <Box
+          as="section"
+          display={'grid'}
+          gridTemplateColumns="1fr 1fr"
+          alignItems={'center'}
+          gap={'29px'}
+          marginBottom={'29px'}
+        >
+          <Categories title="Vida Noturna" />
+          <Categories title="Praia" />
+          <Categories title="moderno" />
+          <Categories title="Classico" />
+        </Box>
         <Categories title="e mais..." />
-      </Box>
+      </Flex>
+
       <Box
         as="div"
         display={'flex'}
@@ -66,7 +63,20 @@ export default function Home() {
         width={'60px'}
         border={`1px solid ${colors.gray[200]}`}
         color={colors.gray[200]}
+        background={colors.gray[200]}
       />
+
+      <Text
+        margin=" 1.5rem 2.4rem 1.25rem 2.4rem"
+        textAlign={'center'}
+        width="297px"
+        fontWeight={'medium'}
+        fontSize="1.25rem"
+        lineHeight={'30px'}
+        color={colors.gray[200]}
+      >
+        Vamos nessa? Então escolha seu continente
+      </Text>
     </Flex>
   )
 }
