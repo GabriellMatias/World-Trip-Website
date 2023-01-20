@@ -1,12 +1,13 @@
 import { Categories } from '@/components/Categories'
 import { HeaderComponent } from '@/components/Header'
+import { Slides } from '@/components/Slides'
 import { Darktheme, LightTheme } from '@/styles/themes'
 import { Box, useColorModeValue, Flex, VStack, Text } from '@chakra-ui/react'
 
 export default function Home() {
   const { colors } = useColorModeValue(Darktheme, LightTheme)
   return (
-    <Flex flexDirection={'column'}>
+    <Flex flexDirection={'column'} flex={'1'}>
       <HeaderComponent />
 
       <VStack
@@ -67,9 +68,9 @@ export default function Home() {
       />
 
       <Text
-        margin=" 1.5rem 2.4rem 1.25rem 2.4rem"
+        margin=" 1.5rem 2.4rem"
         textAlign={'center'}
-        width="297px"
+        width="18rem"
         fontWeight={'medium'}
         fontSize="1.25rem"
         lineHeight={'30px'}
@@ -77,6 +78,7 @@ export default function Home() {
       >
         Vamos nessa? Então escolha seu continente
       </Text>
+      <Slides />
     </Flex>
   )
 }
