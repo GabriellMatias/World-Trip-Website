@@ -10,7 +10,8 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/effect-fade'
 
-import { Flex, Image } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
+import Link from 'next/link'
 
 export function Slides() {
   return (
@@ -25,20 +26,46 @@ export function Slides() {
         style={{ width: '100%', flex: '1' }}
       >
         <SwiperSlide>
-          <Image
-            src={'/Background.png'}
+          <Flex
+            bgImage="url('/Foto.png')"
+            bgSize={'cover'}
+            bgRepeat="no-repeat"
+            align={'center'}
+            justify={'center'}
             width={'100vw'}
-            height={'auto'}
-            alt=""
-          />
+            height={'150px'}
+            color={'$black'}
+          >
+            <Link href={'/ContinentDetails'}>Pais Nome</Link>
+          </Flex>
         </SwiperSlide>
         <SwiperSlide>
-          <Image
-            src={'/Background.png'}
+          <Flex
+            bgImage="url('/Foto-1.png')"
+            bgSize={'cover'}
+            bgRepeat="no-repeat"
+            align={'center'}
+            justify={'center'}
             width={'100vw'}
-            height={'auto'}
-            alt=""
-          />
+            height={'150px'}
+            color={'$black'}
+          >
+            <Link href={'/ContinentDetails'}>Pais Nome</Link>
+          </Flex>
+        </SwiperSlide>
+        <SwiperSlide>
+          <Flex
+            bgImage="url('/Foto-2.png')"
+            bgSize={'cover'}
+            bgRepeat="no-repeat"
+            align={'center'}
+            justify={'center'}
+            width={'100vw'}
+            height={'150px'}
+            color={'$black'}
+          >
+            <Link href={'/ContinentDetails'}>Pais Nome</Link>
+          </Flex>
         </SwiperSlide>
       </Swiper>
     </Flex>
