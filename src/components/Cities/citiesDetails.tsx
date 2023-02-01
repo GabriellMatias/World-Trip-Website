@@ -1,6 +1,8 @@
-import { Flex, Text, Box, Image } from '@chakra-ui/react'
+import { Darktheme, LightTheme } from '@/styles/themes'
+import { Flex, Text, Box, Image, useColorModeValue } from '@chakra-ui/react'
 
 export function CitiesDetails() {
+  const { colors } = useColorModeValue(Darktheme, LightTheme)
   return (
     <Flex
       padding="0 1.5rem"
@@ -9,7 +11,6 @@ export function CitiesDetails() {
       borderBottomRadius={4}
       border={'1px solid orange'}
       gap={16}
-      bgColor={'white'}
     >
       <Text
         marginTop={'1.2rem'}
@@ -17,6 +18,7 @@ export function CitiesDetails() {
         gap="12px"
         display={'flex'}
         flexDirection={'column'}
+        color={colors.gray[200]}
       >
         <strong>Londres</strong>
         <span>Reino Unido</span>

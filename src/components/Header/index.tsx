@@ -6,6 +6,7 @@ import {
   useColorMode,
   useColorModeValue,
   Image,
+  Box,
 } from '@chakra-ui/react'
 
 import Link from 'next/link'
@@ -26,10 +27,17 @@ export function HeaderComponent() {
       justifyContent={'space-between'}
       padding={'0 4rem'}
     >
-      {!isHomePage && (
+      {isHomePage ? (
         <Link href="/">
-          <Icon as={ArrowLeft} fontSize={[20, 40]} justifySelf="start" />
+          <Icon
+            as={ArrowLeft}
+            fontSize={[20, 40]}
+            justifySelf="start"
+            color={colors.gray[200]}
+          />
         </Link>
+      ) : (
+        <Box />
       )}
       <Link href={'/'}>
         <Image src={Logo.src} alt="" width={['81px', '184px']} height={20} />
@@ -37,8 +45,8 @@ export function HeaderComponent() {
       <Button
         onClick={toggleColorMode}
         bg={colors.gray[100]}
-        height={[6, 14]}
-        width={[2, 12]}
+        height={[6, 10]}
+        width={[2, 18]}
       >
         {colorMode === 'dark' ? (
           <Icon as={Sun} weight="fill" />

@@ -3,6 +3,7 @@ import Categories from '@/components/Categories'
 
 import { HeaderComponent } from '@/components/Header'
 import { Slides } from '@/components/Slides'
+
 import { Darktheme, LightTheme } from '@/styles/themes'
 import { Box, useColorModeValue, Flex, Text } from '@chakra-ui/react'
 
@@ -54,8 +55,35 @@ export default function Home() {
         </Text>
       </Flex>
       <Flex>
-        <Slides />
+        <Slides continents={continet} />
       </Flex>
     </Flex>
   )
 }
+
+export const continet = [
+  {
+    slug: '1',
+    title: 'Pais 01',
+    summary: ' text',
+    image: '/Foto-1.png',
+  },
+  {
+    slug: '2',
+    title: 'Pais 02',
+    summary: ' text2',
+    image: '/Foto-2.png',
+  },
+  {
+    slug: '3',
+    title: 'Pais 03',
+    summary: ' text3',
+    image: '/Foto-3.png',
+  },
+  {
+    slug: '4',
+    title: 'Pais 04',
+    summary: ' text4',
+    image: '/Foto-4.png',
+  },
+]

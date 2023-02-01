@@ -1,5 +1,5 @@
 import { Box, Image } from '@chakra-ui/react'
-import { CitiesDetails } from './citiesDetaisl'
+import { CitiesDetails } from './citiesDetails'
 
 export function Cities() {
   return (
