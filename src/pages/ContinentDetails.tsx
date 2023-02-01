@@ -1,3 +1,4 @@
+import { Cities } from '@/components/Cities'
 import { HeaderComponent } from '@/components/Header'
 import { Darktheme, LightTheme } from '@/styles/themes'
 import {
@@ -5,14 +6,11 @@ import {
   Flex,
   Grid,
   Heading,
-  Image,
   Text,
-  Icon,
   HStack,
   useColorModeValue,
 } from '@chakra-ui/react'
 import Head from 'next/head'
-import { CircleHalf } from 'phosphor-react'
 
 export default function ContinentDetails() {
   const { colors } = useColorModeValue(Darktheme, LightTheme)
@@ -84,74 +82,7 @@ export default function ContinentDetails() {
         </Text>
 
         <Grid gridTemplateColumns={'1fr'} justifyItems="right" gap="20px">
-          <Box
-            width="16rem"
-            height={'17rem'}
-            borderRadius={4}
-            border={'1px solid orange'}
-          >
-            <Image
-              boxSizing="border-box"
-              alt=""
-              src="/Europe.png"
-              minH={'10.8rem'}
-              borderRadius="4px 4px 0 0"
-            />
-            <Flex padding="0 1.5rem">
-              <Text
-                marginTop={'1.2rem'}
-                marginBottom={'1.6rem'}
-                gap="12px"
-                display={'flex'}
-                flexDirection={'column'}
-              >
-                <strong>Londres</strong>
-                <span>Reino Unido</span>
-              </Text>
-              <Box
-                display={'flex'}
-                flex={1}
-                alignItems="center"
-                justifyContent={'center'}
-              >
-                <Icon as={CircleHalf} />
-              </Box>
-            </Flex>
-          </Box>
-          <Box
-            width="16rem"
-            height={'17rem'}
-            borderRadius={4}
-            border={'1px solid orange'}
-          >
-            <Image
-              boxSizing="border-box"
-              alt=""
-              src="/Europe.png"
-              minH={'10.8rem'}
-              borderRadius="4px 4px 0 0"
-            />
-            <Flex padding="0 1.5rem">
-              <Text
-                marginTop={'1.2rem'}
-                marginBottom={'1.6rem'}
-                gap="12px"
-                display={'flex'}
-                flexDirection={'column'}
-              >
-                <strong>Londres</strong>
-                <span>Reino Unido</span>
-              </Text>
-              <Box
-                display={'flex'}
-                flex={1}
-                alignItems="center"
-                justifyContent={'center'}
-              >
-                <Icon as={CircleHalf} />
-              </Box>
-            </Flex>
-          </Box>
+          <Cities />
         </Grid>
       </Flex>
     </Flex>

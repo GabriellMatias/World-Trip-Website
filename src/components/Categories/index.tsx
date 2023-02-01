@@ -1,31 +1,34 @@
-import { Darktheme, LightTheme } from '@/styles/themes'
-import { Box, Text, useColorModeValue } from '@chakra-ui/react'
+import { Grid, GridItem } from '@chakra-ui/layout'
+import CategoriesBox from './CategoriesBox'
 
-interface CategoriesProps {
-  title: string
-}
-
-export function Categories({ title }: CategoriesProps) {
-  const { colors } = useColorModeValue(Darktheme, LightTheme)
+export default function Categories() {
   return (
-    <Box
-      as="a"
-      textDecoration={'none'}
-      display="flex"
-      alignItems={'center'}
-      justifyContent="center"
-      gap={'8px'}
+    <Grid
+      templateColumns={['1fr 1fr', '1fr 1fr', '1fr 1fr', 'repeat(5, 1fr)']}
+      w="100%"
+      justifyContent="space-between"
+      alignItems="center"
+      mt={['10', '32']}
+      mx="auto"
+      maxW="1160px"
+      flexWrap="wrap"
+      gap={[1, 5]}
     >
-      <Box
-        as="div"
-        bgColor={'orange.500'}
-        borderRadius="100%"
-        width={'8px'}
-        height={'8px'}
-      />
-      <Text fontWeight={'medium'} fontSize={'lg'} color={colors.gray[100]}>
-        {title}
-      </Text>
-    </Box>
+      <GridItem>
+        <CategoriesBox icon="cocktail" text="vida noturna" />
+      </GridItem>
+      <GridItem>
+        <CategoriesBox icon="surf" text="praia" />
+      </GridItem>
+      <GridItem>
+        <CategoriesBox icon="building" text="moderno" />
+      </GridItem>
+      <GridItem>
+        <CategoriesBox icon="museum" text="clássico" />
+      </GridItem>
+      <GridItem colSpan={[2, 2, 2, 1]}>
+        <CategoriesBox icon="earth" text="e mais..." />
+      </GridItem>
+    </Grid>
   )
 }

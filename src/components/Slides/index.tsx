@@ -1,72 +1,80 @@
-// Import Swiper React components
-// import Swiper core and required modules
-import { Navigation, Pagination, A11y, EffectFade } from 'swiper'
+import { Flex, Heading, Text } from '@chakra-ui/react'
+import Link from 'next/link'
+import SwiperCore, {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Autoplay,
+} from 'swiper'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-// Import Swiper styles
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import 'swiper/css/effect-fade'
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay])
 
-import { Flex } from '@chakra-ui/react'
-import Link from 'next/link'
+interface SliderProps {
+  continents: {
+    slug: string
+    title: string
+    summary: string
+    image: string
+  }[]
+}
 
-export function Slides() {
+export default function Slider({ continents }: SliderProps) {
   return (
-    <Flex margin={'20px 0px'}>
+    <Flex
+      w="100%"
+      h={['250px', '450px']}
+      maxW="1240px"
+      mx="auto"
+      mb={['5', '10']}
+    >
       <Swiper
-        modules={[Navigation, Pagination, A11y, EffectFade]}
-        effect="fade"
-        spaceBetween={100}
         slidesPerView={1}
         navigation
         pagination={{ clickable: true }}
+        autoplay={{
+          delay: 4000,
+        }}
         style={{ width: '100%', flex: '1' }}
       >
-        <SwiperSlide>
-          <Flex
-            bgImage="url('/Foto.png')"
-            bgSize={'cover'}
-            bgRepeat="no-repeat"
-            align={'center'}
-            justify={'center'}
-            width={'100vw'}
-            height={'150px'}
-            color={'$black'}
-          >
-            <Link href={'/ContinentDetails'}>Pais Nome</Link>
-          </Flex>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Flex
-            bgImage="url('/Foto-1.png')"
-            bgSize={'cover'}
-            bgRepeat="no-repeat"
-            align={'center'}
-            justify={'center'}
-            width={'100vw'}
-            height={'150px'}
-            color={'$black'}
-          >
-            <Link href={'/ContinentDetails'}>Pais Nome</Link>
-          </Flex>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Flex
-            bgImage="url('/Foto-2.png')"
-            bgSize={'cover'}
-            bgRepeat="no-repeat"
-            align={'center'}
-            justify={'center'}
-            width={'100vw'}
-            height={'150px'}
-            color={'$black'}
-          >
-            <Link href={'/ContinentDetails'}>Pais Nome</Link>
-          </Flex>
-        </SwiperSlide>
+        {continents.map((continent) => (
+          <SwiperSlide key={continent.slug}>
+            <Flex
+              w="100%"
+              h="100%"
+              align="center"
+              justify="center"
+              direction="column"
+              bgImage={`url('${continent.image}')`}
+              bgPosition="100% 30%"
+              bgRepeat="no-repeat"
+              bgSize="cover"
+              textAlign="center"
+            >
+              <Link href={`/continent/${continent.slug}`}>
+                <a>
+                  <Heading
+                    fontSize={['3xl', '4xl', '5xl']}
+                    color="gray.100"
+                    fontWeight="bold"
+                  >
+                    {continent.title}
+                  </Heading>
+                  <Text
+                    fontWeight="bold"
+                    color="gray.300"
+                    fontSize={['0.8rem', '1xl', '2xl']}
+                    mt={['2', '4']}
+                  >
+                    {continent.summary}
+                  </Text>
+                </a>
+              </Link>
+            </Flex>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </Flex>
   )
