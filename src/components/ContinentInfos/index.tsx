@@ -1,7 +1,19 @@
 import { Darktheme, LightTheme } from '@/styles/themes'
 import { Flex, Text, Box, HStack, useColorModeValue } from '@chakra-ui/react'
 
-export function ContinentInfos() {
+interface ContinentInfosProps {
+  description: string
+  totalLanguages: number
+  totalCities: number
+  totalCountries: number
+}
+
+export function ContinentInfos({
+  description,
+  totalCities,
+  totalCountries,
+  totalLanguages,
+}: ContinentInfosProps) {
   const { colors } = useColorModeValue(Darktheme, LightTheme)
   return (
     <Flex
@@ -19,10 +31,7 @@ export function ContinentInfos() {
         fontSize={['0.875rem', '1.5rem']}
         color={colors.gray[200]}
       >
-        A Europa é, por convenção, um dos seis continentes do mundo.
-        Compreendendo a península ocidental da Eurásia, a Europa geralmente
-        divide-se da Ásia a leste pela divisória de águas dos montes Urais, o
-        rio Ural, o mar Cáspio, o Cáucaso, e o mar Negro a sudeste
+        {description}
       </Text>
       <HStack flex={1} justifyContent={'space-between'}>
         <Box
@@ -37,7 +46,7 @@ export function ContinentInfos() {
             lineHeight={['2.25rem', '3.25rem']}
             fontSize={['1.5rem', '3rem']}
           >
-            50
+            {totalCountries}
           </Text>
           <Text
             as={'span'}
@@ -46,7 +55,7 @@ export function ContinentInfos() {
             fontSize={['0.875rem', '1.5rem']}
             color={colors.gray[200]}
           >
-            paises
+            Countries
           </Text>
         </Box>
         <Box
@@ -61,7 +70,7 @@ export function ContinentInfos() {
             lineHeight={['2.25rem', '3.25rem']}
             fontSize={['1.5rem', '3rem']}
           >
-            60
+            {totalLanguages}
           </Text>
           <Text
             as={'span'}
@@ -70,7 +79,7 @@ export function ContinentInfos() {
             fontSize={['0.875rem', '1.5rem']}
             color={colors.gray[200]}
           >
-            linguas
+            Languages
           </Text>
         </Box>
         <Box
@@ -85,7 +94,7 @@ export function ContinentInfos() {
             lineHeight={['2.25rem', '3.25rem']}
             fontSize={['1.5rem', '3rem']}
           >
-            24
+            {totalCities} +
           </Text>
           <Text
             as={'span'}
@@ -94,7 +103,7 @@ export function ContinentInfos() {
             fontSize={['0.875rem', '1.5rem']}
             color={colors.gray[200]}
           >
-            cidades +100
+            Cities
           </Text>
         </Box>
       </HStack>

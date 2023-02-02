@@ -1,9 +1,16 @@
 import { Flex } from '@chakra-ui/react'
+interface ContinentBannerProps {
+  continentImage: string
+  title: string
+}
 
-export function ContinentBanner() {
+export function ContinentBanner({
+  continentImage,
+  title,
+}: ContinentBannerProps) {
   return (
     <Flex
-      bgImage="url('/Europe.png')"
+      bgImage={`url(${continentImage})`}
       w="100%"
       h={['150px', '300px', '500px']}
       px={['0', '0', '36']}
@@ -18,7 +25,7 @@ export function ContinentBanner() {
       color="gray.100"
       fontWeight="500"
     >
-      Europa
+      {title}
     </Flex>
   )
 }

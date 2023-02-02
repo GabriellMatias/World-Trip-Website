@@ -1,4 +1,11 @@
-import { Flex, Image, Text, useBreakpointValue } from '@chakra-ui/react'
+import { Darktheme, LightTheme } from '@/styles/themes'
+import {
+  Flex,
+  Image,
+  Text,
+  useBreakpointValue,
+  useColorModeValue,
+} from '@chakra-ui/react'
 
 interface CategoriesBoxProps {
   icon: string
@@ -10,6 +17,7 @@ export default function CategoriesBox({ icon, text }: CategoriesBoxProps) {
     base: false,
     sm: true,
   })
+  const { colors } = useColorModeValue(Darktheme, LightTheme)
 
   return (
     <Flex direction={['row', 'column']} align="center" justify="center">
@@ -20,7 +28,11 @@ export default function CategoriesBox({ icon, text }: CategoriesBoxProps) {
           •
         </Text>
       )}
-      <Text fontWeight="600" color="gray.700" fontSize={['md', 'xl', '2xl']}>
+      <Text
+        fontWeight="600"
+        color={colors.gray[200]}
+        fontSize={['md', 'xl', '2xl']}
+      >
         {text}
       </Text>
     </Flex>

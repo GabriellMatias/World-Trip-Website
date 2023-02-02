@@ -3,12 +3,30 @@ import Categories from '@/components/Categories'
 
 import { HeaderComponent } from '@/components/Header'
 import { Slides } from '@/components/Slides'
+import { getPrismicClient } from '@/services/prismic'
 
 import { Darktheme, LightTheme } from '@/styles/themes'
 import { Box, useColorModeValue, Flex, Text } from '@chakra-ui/react'
+import { GetStaticProps } from 'next'
+import Prismic from '@prismicio/client'
+import { useRouter } from 'next/router'
+import Loading from '@/components/Loading'
 
-export default function Home() {
+export interface HomeSliderProps {
+  continents: {
+    slug: string
+    title: string
+    subtitle: string
+    sliderImage: string
+  }[]
+}
+
+export default function Home({ continents }: HomeSliderProps) {
   const { colors } = useColorModeValue(Darktheme, LightTheme)
+  const router = useRouter()
+  if (router.isFallback) {
+    return <Loading />
+  }
   return (
     <Flex flexDirection={'column'} flex={'1'}>
       <HeaderComponent />
@@ -55,35 +73,26 @@ export default function Home() {
         </Text>
       </Flex>
       <Flex>
-        <Slides continents={continet} />
+        <Slides continents={continents} />
       </Flex>
     </Flex>
   )
 }
 
-export const continet = [
-  {
-    slug: '1',
-    title: 'Pais 01',
-    summary: ' text',
-    image: '/Foto-1.png',
-  },
-  {
-    slug: '2',
-    title: 'Pais 02',
-    summary: ' text2',
-    image: '/Foto-2.png',
-  },
-  {
-    slug: '3',
-    title: 'Pais 03',
-    summary: ' text3',
-    image: '/Foto-3.png',
-  },
-  {
-    slug: '4',
-    title: 'Pais 04',
-    summary: ' text4',
-    image: '/Foto-4.png',
-  },
-]
+export const getStaticProps: GetStaticProps = async () => {
+  const prismic = getPrismicClient()
+  const response = await prismic.query([
+    Prismic.Predicates.at('document.type', 'contries'),
+  ])
+
+  const continents = response.results.map((continent) => {
+    return {
+      slug: continent.uid,
+      title: continent.data.title,
+      subtitle: continent.data.subtitle,
+      sliderImage: continent.data.slide_image.url,
+    }
+  })
+
+  return { props: { continents }, revalidate: 1000 * 6 }
+}

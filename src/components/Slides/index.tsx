@@ -9,17 +9,9 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/effect-fade'
+import { HomeSliderProps } from '@/pages'
 
-interface SliderProps {
-  continents: {
-    slug: string
-    title: string
-    summary: string
-    image: string
-  }[]
-}
-
-export function Slides({ continents }: SliderProps) {
+export function Slides({ continents }: HomeSliderProps) {
   return (
     <Flex
       w="100%"
@@ -43,19 +35,20 @@ export function Slides({ continents }: SliderProps) {
         {continents.map((continent) => (
           <SwiperSlide key={continent.slug}>
             <Flex
+              borderRadius={8}
               w="100%"
               h="100%"
               align="center"
               justify="center"
               direction="column"
-              bgImage={`url('${continent.image}')`}
+              bgImage={`url('${continent.sliderImage}')`}
               bgPosition="100% 30%"
               bgRepeat="no-repeat"
               bgSize="cover"
               textAlign="center"
             >
               {/* continent/${continent.slug} */}
-              <Link href={`/ContinentDetails`}>
+              <Link href={`/ContinentDetails/${continent.slug}`}>
                 <Heading
                   fontSize={['3xl', '4xl', '5xl']}
                   color="gray.100"
@@ -69,7 +62,7 @@ export function Slides({ continents }: SliderProps) {
                   fontSize={['0.8rem', '1xl', '2xl']}
                   mt={['2', '4']}
                 >
-                  {continent.summary}
+                  {continent.subtitle}
                 </Text>
               </Link>
             </Flex>
